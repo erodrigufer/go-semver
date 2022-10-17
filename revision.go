@@ -46,8 +46,8 @@ func GetRevision() (string, error) {
 		return "unavailable", fmt.Errorf("error: no revision information could be retrieved from the executable.")
 	}
 
-	// Add the '-dirty' suffix if the codebase has uncomitted modifications,
-	// since the last commit.
+	// Add the '-dirty' suffix if the codebase used to build the executable
+	// has uncommitted modifications, since the last commit.
 	if modified {
 		return fmt.Sprintf("%s-dirty", revision), nil
 	}
