@@ -1,4 +1,5 @@
 # go-semver
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/erodrigufer/go-semver)](https://pkg.go.dev/github.com/erodrigufer/go-semver)
 
 The package **go-semver** (Go [Semantic Versioning](https://semver.org/)) provides functions to handle semantic versioning. It integrates nicely with CLI packages like [urfave/cli](https://github.com/urfave/cli) or [cobra](https://github.com/spf13/cobra) to show the current version and/or revision of a Go executable.
 
