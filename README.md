@@ -3,6 +3,17 @@
 
 The package **go-semver** (Go [Semantic Versioning](https://semver.org/)) provides functions to handle semantic versioning. It integrates nicely with CLI packages like [urfave/cli](https://github.com/urfave/cli) or [cobra](https://github.com/spf13/cobra) to show the current version and/or revision of a Go executable.
 
+<!-- vim-markdown-toc GFM -->
+
+* [How to use](#how-to-use)
+	- [Show the build revision of a Go executable](#show-the-build-revision-of-a-go-executable)
+* [Troubleshooting](#troubleshooting)
+	- [Revision is unavailable, i.e. is not showing up](#revision-is-unavailable-ie-is-not-showing-up)
+	- [Minimum Go version required for a build](#minimum-go-version-required-for-a-build)
+* [References](#references)
+
+<!-- vim-markdown-toc -->
+
 ## How to use
 1. Add this package as a dependency to your Go project by running the command `go get github.com/erodrigufer/go-semver` inside the directory where the go.mod file of your project lies.
 2. Import the package into the Go files that will use its methods.
@@ -22,3 +33,6 @@ You have to build your executable from within the VCS (Version Control System, e
 In order for the methods in this package to work, the minimum Go version used to compile an executable  must be **Go 1.18** since the struct type _[BuildSetting](https://pkg.go.dev/runtime/debug#BuildSetting)_ was first added in Go 1.18. Otherwise, the commit hash (i. e. revision) and revision status used for the build is not getting embedded into the executable and the executable is not able to access the _BuildSetting_ struct.
 
 If the package [runtime/debug](https://pkg.go.dev/runtime/debug) gets extended in the future, it might even be possible to read the tag with the latest release version used to compile an executable, but as of Go 1.19, this is only achieved when installing a package by running `go install` (one can access the versioning information embedded into an executable by running `go version -m <PATH>` with the path to the executable). 
+
+## References
+* [3 ways to embed commit hash to Go programs](https://developers.redhat.com/articles/2022/11/14/3-ways-embed-commit-hash-go-programs): A guide on how to embed a commit hash to a Go program at build time. [_Red Hat_]
