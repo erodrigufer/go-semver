@@ -3,6 +3,7 @@
 
 The package **go-semver** (Go [Semantic Versioning](https://semver.org/)) provides functions to handle semantic versioning. It integrates nicely with CLI packages like [urfave/cli](https://github.com/urfave/cli) or [cobra](https://github.com/spf13/cobra) to show the current version and/or revision of a Go executable.
 
+## Table of contents
 <!-- vim-markdown-toc GFM -->
 
 * [How to use](#how-to-use)
@@ -23,6 +24,23 @@ The method `GetRevision()` returns the commit's hash (revision) of the last comm
 
 If the method was unable to retrieve a revision, it will return the string 'unavailable' and a non-nil error.
 
+```go
+import (
+	"fmt"
+
+	semver "github.com/erodrigufer/go-semver"
+)
+
+func printRevision() error {
+	rev, err := semver.GetRevision()
+	if err != nil {
+		return err
+	}
+	
+	fmt.Printf("revision: %s", rev)
+	return nil
+}
+```
 ## Troubleshooting
 ### Revision is unavailable, i.e. is not showing up
 You have to build your executable from within the VCS (Version Control System, e.g. git) repository/codebase in order for the `go` build tool to get the build information related to the VCS, like the revision, or its status (was it built with uncommitted modifications related to the last commit).
